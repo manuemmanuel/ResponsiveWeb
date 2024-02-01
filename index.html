@@ -6,6 +6,17 @@
     <title>Personal website</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/890c48909c.js" crossorigin="anonymous"></script>
+    <style>
+        .about-img {
+            opacity: 0;
+            transform: translateY(100px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .about-img.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 
 <body>
@@ -149,7 +160,7 @@
                         <a href="https://x.com/edwinthoma47568?t=rMXx_bLYfHLhbLzenwFt9w&s=08"><i class="fa-brands fa-square-twitter"></i></a>
                         <a href="https://www.instagram.com/jose_thomax/"><i class="fa-brands fa-square-instagram"></i></a>
                     </div>
-                    <a href="image\my-cv.pdf" download class="btn btn2">Dowload CV</a>
+                    <a href="image\my-cv.pdf" download class="btn btn2">Download CV</a>
                 </div>
                 <div class="contact-right">
                     <form>
@@ -195,6 +206,7 @@
     </script>
 
     <script>
+        var aboutTitle = document.querySelector(".subtitle");
         var aboutImg = document.getElementById("about-img");
 
         function isInViewport(element) {
@@ -206,17 +218,18 @@
                 rect.right <= (window.innerWidth || document.documentElement.clientWidth)
             );
         }
+
         function handleScroll() {
-            if (isInViewport(aboutImg)) {
-                aboutImg.style.opacity = 1;
-                aboutImg.style.transform = "translateY(0)";
+            if (isInViewport(aboutTitle)) {
+                aboutImg.classList.add("visible");
             } else {
-                aboutImg.style.opacity = 0;
-                aboutImg.style.transform = "translateY(100px)";
+                aboutImg.classList.remove("visible");
             }
         }
+
         window.addEventListener("scroll", handleScroll);
+
+
     </script>
 </body>
 </html>
-
